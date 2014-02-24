@@ -1,0 +1,189 @@
+
+<!--Date: 2010-1-18-->
+<!--Assignment3-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0077)http://people.senecac.on.ca/gessy.degand/io/assignments/a3/studentrecord.html -->
+<HTML xmlns="http://www.w3.org/1999/xhtml">
+<HEAD><TITLE>Assignment # 3 Main Body</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 8.00.7600.16700">
+
+
+
+
+
+
+<script type="text/javascript">
+function validateForm()
+{
+	var x=document.studentrec.StudentFullName.value;
+	if (x==null || x=="")
+		{
+			alert("Full name must be filled out");
+			return false;
+		}
+	var sCheck = /^([a-zA-Z]+)((\s)*[a-zA-Z]+)*$/;
+	if (sCheck.test(x))
+		{
+			alert("Full name contains letters only");
+		}
+	else
+		{
+			alert("Full name contains not only letters");
+			return false;
+		}
+
+	var y=document.studentrec.StudentNumber.value;
+	if (y==null || y=="")
+		{
+			alert("student number must be filled out");
+			return false;
+		}
+	var sCheck = /^([0-9]+)((\s)*[0-9]+)*$/;
+	if (sCheck.test(y))
+		{
+			alert("student number contains number only");
+		}
+	else
+		{
+			alert("student number not contains numbers only");
+			return false;
+		}
+
+	var z=document.studentrec.password.value;
+	var sCheck = /^(degandg)$/;
+	if (sCheck.test(z)) //to use .test, sCheck has to be reg expression
+		{
+			alert("correct password");
+		}
+	else
+		{
+			alert("Wrong Password!");
+			return false;
+		}
+
+	if (document.studentrec.a1.checked == false && document.studentrec.a2.checked == false && document.studentrec.a3.checked == false && document.studentrec.a4.checked == false && document.studentrec.a5.checked == false && document.studentrec.a6.checked == false)
+	{
+		confirm("Please Select One Item!"); 
+		return false;
+	}
+
+	if (document.studentrec.gender[0].checked == false && document.studentrec.gender[1].checked == false)
+	{
+		document.write("Please Select One Item!");
+		return false; 
+	}
+
+	if (document.studentrec.courselist.selectedIndex == -1)
+	{
+		alert("Please Select One Item in dropbox!");
+		return false;
+	}
+
+	var textarea=document.studentrec.comments.value;
+	if (textarea.length<5)
+		{
+			alert("Comments with 5 chars must be filled out");
+			return false;
+		}
+
+	var emailCheck = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.[a-zA-Z]{2,3})+$/;
+	if ( emailCheck.test(document.studentrec.program.value)) 
+	{
+    		alert("valid email");
+	}
+	else
+	{
+		alert("Invalid email address!!");
+		return false;
+	}
+}
+</script>
+
+<script type="text/javascript">
+function change()
+{
+	document.studentrec.program.value=document.studentrec.program.value.toUpperCase()
+	/* not variable but a object */
+}
+</script>
+
+</HEAD>
+<BODY onload="alert('WELCOME TO MY LAST ASSIGNMENT!')" background=studentrecord_files/greybkgrd.gif>
+<FORM method=post name=studentrec 
+action=http://www.cookwood.com/cgi-bin/display_results.pl onsubmit="return validateForm()">
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD><B>Student Full Name :</B></TD>
+    <TD><INPUT size=40 type=text name=StudentFullName></TD>
+    <TD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    </TD>
+    <TD><B>Gender:</B></TD>
+    <TD>&nbsp;</TD>
+    <TD>Male </TD>
+    <TD><INPUT value=male type=radio name=gender></TD></TR>
+  <TR>
+    <TD><B>Student Number :</B></TD>
+    <TD><INPUT size=15 type=text name=StudentNumber></TD>
+    <TD colSpan=3>&nbsp;</TD>
+    <TD>Female</TD>
+    <TD><INPUT value=female type=radio name=gender></TD></TR></TBODY></TABLE><BR>
+<P>Which Assignment(s) from the course outline have you completed already? </P>
+<CENTER>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD><INPUT value=assignment1 type=checkbox name=a1>Assignment # 1</TD>
+    <TD></TD>
+    <TD><INPUT value=assignment4 type=checkbox name=a4>Assignment # 4</TD></TR>
+  <TR>
+    <TD><INPUT value=assignment2 type=checkbox name=a2>Assignment # 2</TD>
+    <TD></TD>
+    <TD><INPUT value=assignment5 type=checkbox name=a5>Assignment # 5</TD></TR>
+  <TR>
+    <TD><INPUT value=assignment3 type=checkbox name=a3>Assignment # 3</TD>
+    <TD></TD>
+    <TD><INPUT value=assignment6 type=checkbox name=a6>Assignmen t# 
+  6</TD></TR></TBODY></TABLE></CENTER><BR>The following below are all the topics 
+that we will be covering this semester <BR>Select the topic(s) that you haven't 
+fully understood yet. <BR><BR><BR>
+<CENTER><SELECT size=2 name=courselist> <OPTION value=html>HTML</OPTION> 
+  <OPTION value=basic_xhtml>BASIC XHTML</OPTION> <OPTION value=links_lists>LINKS 
+  and LISTS</OPTION> <OPTION value=tables>TABLES</OPTION> <OPTION 
+  value=frames>FRAMES</OPTION> <OPTION value=forms>FORMS</OPTION> <OPTION 
+  value=dhtml>DHTML and CSS</OPTION> <OPTION value=js_objects_events>JAVASCRIPT 
+  OBJECTS and EVENTS.</OPTION></SELECT> </CENTER><BR>General Comments: <BR><TEXTAREA rows=10 cols=100 name=comments></TEXTAREA> <BR><BR>Please Enter 
+your password in order to submit the form: <BR><B>Password:</B>
+<INPUT 
+type=password name=password> <BR><BR>Please enter your Program name in 
+lowercase:<INPUT size=85 type=text name=program> <BR>Convert to Uppercase: 
+<INPUT value="My Program @ Seneca" type=button name=convert onclick="change()"> <BR><BR>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    </TD>
+    <TD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    </TD>
+    <TD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    </TD>
+    <TD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    </TD>
+    <TD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    </TD>
+    <TD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </TD>
+    <TD><INPUT value="        Submit         " type=submit> <INPUT value="         Reset         " type=reset> 
+</TD></TR></TBODY></TABLE></FORM>
+<p>
+Disclaimer:
+
+This site is a student project only. Any opinions, statements or claims expressed here are that of this site's creator and are not necessarily those of Seneca College. Questions or comments about this site can be directed to my Seneca College e-mail address kwong67@learn.senecac.on.ca e-mail address.
+</p>
+</BODY></HTML>
